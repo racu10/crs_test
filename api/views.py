@@ -2,7 +2,6 @@ from datetime import datetime
 
 from django.http import JsonResponse
 from django.shortcuts import redirect
-from django.urls import reverse
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
