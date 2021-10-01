@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django.http import JsonResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
@@ -73,3 +75,16 @@ class AvailabilityView(APIView):
         data = avaliability_rooms_by_hotel_code(hotel_code, checkin_date, checkout_date)
 
         return JsonResponse(data=data)
+
+
+class RaulView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('admin:index')
+
+        return JsonResponse(data={
+            'name': 'Raul Torne',
+            'linkedin': 'https://www.linkedin.com/in/raultornealonso/',
+            'github': 'https://github.com/racu10',
+        })
